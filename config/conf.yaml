@@ -1,0 +1,16 @@
+---
+interactions:
+  - request:
+      path: /
+      method: GET
+    response:
+      statusCode: 200
+      type: plain
+      body: 'test plain response'
+  - request:
+      path: /json
+      method: GET
+    response:
+      statusCode: 200
+      type: json
+      body: '{"name": "test json response"}'

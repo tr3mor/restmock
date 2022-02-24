@@ -3,7 +3,6 @@ package restmock
 import (
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
-	"log"
 )
 
 type Config struct {
@@ -12,7 +11,7 @@ type Config struct {
 
 type Interaction struct {
 	Request struct {
-		Path string `yaml:"path"`
+		Path   string `yaml:"path"`
 		Method string `yaml:"method"`
 	} `yaml:"request"`
 	Response struct {
@@ -22,15 +21,15 @@ type Interaction struct {
 	} `yaml:"response"`
 }
 
-func ParseConfig(path string) *Config{
+func ParseConfig(path string, h *HttpLogger) *Config {
 	conf := Config{}
 	yamlFile, err := ioutil.ReadFile(path)
 	if err != nil {
-		log.Fatal("Cant read config file", err)
+		h.logger.Fatal("Cant read config file", err)
 	}
 	err = yaml.Unmarshal(yamlFile, &conf)
 	if err != nil {
-		log.Fatal("Cant unmarshall config file", err)
+		h.logger.Fatal("Cant unmarshall config file", err)
 	}
 	return &conf
 }

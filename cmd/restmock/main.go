@@ -6,7 +6,7 @@ import (
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
-	"rest-mock/internal/app/restmock"
+	"restmock/internal/app/restmock"
 	"time"
 )
 
@@ -17,7 +17,7 @@ func main() {
 	flag.StringVar(&host, "host", "0.0.0.0", "Host on which server should run")
 	flag.StringVar(&port, "port", "8080", "Port on which server should run")
 	flag.Parse()
-	conf := restmock.ParseConfig(confPath)
+	conf := restmock.ParseConfig(confPath, l)
 	r := mux.NewRouter()
 	srv := &http.Server{
 		Handler:      r,

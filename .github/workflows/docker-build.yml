@@ -27,4 +27,4 @@ jobs:
           push: true
           tags: tr3mor1401/restmock:latest
           context: .
-          file: build/Dockerfile
+          file: ./build/Dockerfile

@@ -2,7 +2,7 @@ local-build:
 	@go build -v -o bin/restmock ./cmd/restmock/
 
 start: local-build
-	./bin/restmock
+	./bin/restmock --config ./config/conf.yaml
 
 docker-build:
 	@docker build -f ./build/Dockerfile -t restmock .

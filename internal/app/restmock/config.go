@@ -2,7 +2,7 @@ package restmock
 
 import (
 	"gopkg.in/yaml.v2"
-	"io/ioutil"
+	"os"
 )
 
 type Config struct {
@@ -23,7 +23,7 @@ type Interaction struct {
 
 func ParseConfig(path string, h *HttpLogger) *Config {
 	conf := Config{}
-	yamlFile, err := ioutil.ReadFile(path)
+	yamlFile, err := os.ReadFile(path)
 	if err != nil {
 		h.logger.Fatal("Cant read config file", err)
 	}
